@@ -1,0 +1,21 @@
+html, body {
+    height: 100%;
+}
+
+#calendar {
+    height: 80%;
+    width: 80%;
+
+    margin: 0 auto;
+
+}
+
+.day {
+    height: calc(100% / 6);
+    width: calc(100% / 7);
+
+    float: left;
+
+    box-sizing: border-box;
+    border: 1px solid black;
+}
