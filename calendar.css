@@ -2,6 +2,10 @@ html, body {
     height: 100%;
 }
 
+body {
+    background: linear-gradient(skyblue, lightblue);
+}
+
 
 
 #top {
@@ -13,7 +17,9 @@ h1 {
     padding-top: 1%;
     font-size: 3em;
     line-height: 100%;
-    display: inline;
+    display: inline-block;
+
+    width: 25%;
 }
 
 button {
@@ -42,8 +48,17 @@ button {
 
     font-size: 2em;
     padding: 0.5%;
+
+    background: white;
 }
 
 .other-month {
     color: gray;
+    background: ivory;
+}
+
+
+
+.day:hover {
+    background: lightgray;
 }

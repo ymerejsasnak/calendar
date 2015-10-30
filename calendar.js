@@ -43,7 +43,7 @@ $(function() {
             // then run through, putting in the dates
             for (let gridDay = 0; gridDay < GRID_DAYS; gridDay++) {
                 let currentDiv = $('#day' + gridDay)
-                currentDiv.text(this.dateObject.getDate());
+                currentDiv.html(`<p>${this.dateObject.getDate()}</p>`);
                 // make text gray if date is from previous or next month
                 if (this.dateObject.getMonth() !== this.currentMonth) {
                     currentDiv.addClass('other-month');
@@ -73,7 +73,7 @@ $(function() {
     PREVIOUS_BUTTON.on('click', function() {
         //move date to somewhere in the middle of the previous month so it has to recalculate date positions
         cal.dateObject.setDate(cal.dateObject.getDate() - 15);
-
+        
         cal.dateObject.setMonth(cal.dateObject.getMonth() - 1);
         cal.currentMonth = cal.dateObject.getMonth();
 
