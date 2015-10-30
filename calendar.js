@@ -12,12 +12,37 @@ function Calendar() {
 
     
     this.dateObject = new Date();
+    this.currentMonth = this.dateObject.getMonth();
 
 
     this.makeDayDivs = function() {
         for (let id = 0; id < GRID_DAYS; id++) {
             CALENDAR_DIV.append($('<div class="day" id="day' + id + '"></div>'));
         }
+    }
+
+    this.setDateLocations = function() {
+        // cycle days back to the first of the month
+        while (this.dateObject.getDate() != 1) {
+            this.dateObject.setDate(this.dateObject.getDate() - 1);            
+        }
+
+        // then cycle back to that monday (so can show last x days of previous month)
+        while (this.dateObject.getDay() > 0) {
+            this.dateObject.setDate(this.dateObject.getDate() - 1);            
+        }
+
+        // then run through, putting in the dates
+        for (let gridDay = 0; gridDay < GRID_DAYS; gridDay++) {
+            let currentDiv = $('#day' + gridDay)
+            currentDiv.text(this.dateObject.getDate());
+            // make text gray if date is from previous or next month
+            if (this.dateObject.getMonth() !== this.currentMonth) {
+                currentDiv.addClass('other-month');
+            }
+            this.dateObject.setDate(this.dateObject.getDate() + 1);
+        }
+
     }
     
 }
@@ -27,6 +52,7 @@ function Calendar() {
 
 let cal = new Calendar;
 cal.makeDayDivs();
+cal.setDateLocations();
 
 
 
